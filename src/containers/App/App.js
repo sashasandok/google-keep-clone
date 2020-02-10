@@ -5,21 +5,24 @@ import Main from "../../components/Main/Main";
 import Login from "../../components/Login/Login";
 import Signup from "../../components/Signup/Signup";
 import AuthProvider from "../../auth/Auth";
+import DataProvider from "../../components/DataContext";
 import "./App.scss";
 
 function App() {
   return (
     <div className="app">
       <AuthProvider>
-        <Router>
-          <div>
-            <Switch>
-              <PrivateRoute exact path="/" component={Main} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} />
-            </Switch>
-          </div>
-        </Router>
+        <DataProvider>
+          <Router>
+            <div>
+              <Switch>
+                <PrivateRoute exact path="/" component={Main} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={Signup} />
+              </Switch>
+            </div>
+          </Router>
+        </DataProvider>
       </AuthProvider>
     </div>
   );
