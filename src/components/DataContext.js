@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import noteMapper from "../mappers/note";
-import firebase from "../config/firebase";
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import noteMapper from '../mappers/note';
+import firebase from '../config/firebase';
 
 export const DataContext = React.createContext();
 
@@ -10,9 +11,9 @@ const DataProvider = ({ children }) => {
 
   useEffect(() => {
     const db = firebase.firestore();
-    db.collection("notes").onSnapshot(snap => {
+    db.collection('notes').onSnapshot(snap => {
       const notes = snap.docs.map(doc =>
-        noteMapper({ ...doc.data(), id: doc.id })
+        noteMapper({ ...doc.data(), id: doc.id }),
       );
       setData(notes);
     });
@@ -23,6 +24,10 @@ const DataProvider = ({ children }) => {
       {children}
     </DataContext.Provider>
   );
+};
+
+DataProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default DataProvider;

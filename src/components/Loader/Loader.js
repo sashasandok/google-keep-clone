@@ -1,6 +1,6 @@
-import React from "react";
-import { Spin } from "antd";
-import "./Loader.scss";
+import React from 'react';
+import { Spin } from 'antd';
+import './Loader.scss';
 
 const Loader = () => {
   return (

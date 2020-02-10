@@ -1,14 +1,14 @@
-import React from "react";
-import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
-import PrivateRoute from "../../auth/PrivateRoute";
-import Main from "../../components/Main/Main";
-import Login from "../../components/Login/Login";
-import Signup from "../../components/Signup/Signup";
-import AuthProvider from "../../auth/Auth";
-import DataProvider from "../../components/DataContext";
-import "./App.scss";
+import React from 'react';
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import PrivateRoute from '../../auth/PrivateRoute';
+import Main from '../../components/Main/Main';
+import Login from '../../components/Login/Login';
+import Signup from '../../components/Signup/Signup';
+import AuthProvider from '../../auth/Auth';
+import DataProvider from '../../components/DataContext';
+import './App.scss';
 
-require("dotenv").config();
+require('dotenv').config();
 
 function App() {
   return (

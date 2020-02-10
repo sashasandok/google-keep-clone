@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import firebase from "../config/firebase";
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import firebase from '../config/firebase';
 
 export const AuthContext = React.createContext();
 
@@ -15,6 +16,10 @@ const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
+};
+
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default AuthProvider;

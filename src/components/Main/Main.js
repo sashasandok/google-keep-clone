@@ -1,21 +1,21 @@
-import React, { useContext, useState } from "react";
-import { useInputValue } from "../../custom-hooks/";
-import Loader from "../Loader/Loader";
-import Modal from "../Modal/Modal";
-import Layout from "../../hocs/Layout/Layout";
-import Note from "../Note/Note";
-import { Input, Icon } from "antd";
-import { DataContext } from "../DataContext";
-import "./Main.scss";
+import React, { useContext, useState } from 'react';
+import { useInputValue } from '../../custom-hooks/';
+import Loader from '../Loader/Loader';
+import Modal from '../Modal/Modal';
+import Layout from '../../hocs/Layout/Layout';
+import Note from '../Note/Note';
+import { Input, Icon } from 'antd';
+import { DataContext } from '../DataContext';
+import './Main.scss';
 
-const Main = props => {
+const Main = () => {
   const { data, isLoading, setIsLoading } = useContext(DataContext);
 
   const [openCreate, setOpenCreate] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const title = useInputValue("");
-  const content = useInputValue("");
+  const title = useInputValue('');
+  const content = useInputValue('');
 
   const openCreateBlock = () => {
     setOpenCreate(true);
@@ -26,14 +26,14 @@ const Main = props => {
   };
 
   const onKeyDown = event => {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       event.preventDefault();
       event.stopPropagation();
       onSubmit();
     }
   };
 
-  const openModal = id => {
+  const openModal = () => {
     setIsModalOpen(true);
   };
 
@@ -43,9 +43,9 @@ const Main = props => {
 
   const onSubmit = () => {
     if (!title.bind.value || !content.bind.value) {
-      alert("PLEASE ENTER TEXT");
+      alert('PLEASE ENTER TEXT');
     } else {
-      console.log("Submitted", title.bind.value, content.bind.value);
+      console.log('Submitted', title.bind.value, content.bind.value);
     }
     title.clear();
     content.clear();

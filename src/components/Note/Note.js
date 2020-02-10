@@ -1,9 +1,10 @@
-import React from "react";
-import { Icon } from "antd";
-import "./Note.scss";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Icon } from 'antd';
+import './Note.scss';
 
 const iconStyle = {
-  color: "gray"
+  color: 'gray',
 };
 
 const Note = ({ id, title, content, openModal }) => {
@@ -21,10 +22,6 @@ const Note = ({ id, title, content, openModal }) => {
       </div>
       <span onClick={openModal}>{content}</span>
       <div className="bottom-icons">
-        {/* <Icon type="pushpin" className="pushpin-icon" />
-        <Icon type="pushpin" className="pushpin-icon" />
-        <Icon type="pushpin" className="pushpin-icon" />
-        <Icon type="pushpin" className="pushpin-icon" /> */}
         <Icon
           type="delete"
           className="pushpin-icon"
@@ -34,6 +31,13 @@ const Note = ({ id, title, content, openModal }) => {
       </div>
     </div>
   );
+};
+
+Note.propTypes = {
+  id: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  openModal: PropTypes.func.isRequired,
 };
 
 export default Note;

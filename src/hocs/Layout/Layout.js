@@ -1,6 +1,7 @@
-import React from "react";
-import Header from "../../components/Header/Header";
-import "./Layout.scss";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Header from '../../components/Header/Header';
+import './Layout.scss';
 
 const layout = ({ children }) => {
   return (
@@ -9,6 +10,10 @@ const layout = ({ children }) => {
       <section className="layout-content">{children}</section>
     </div>
   );
+};
+
+layout.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default layout;

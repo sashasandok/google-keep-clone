@@ -1,9 +1,10 @@
-import React, { useCallback, useContext } from "react";
-import firebase from "../../config/firebase";
-import { Input, Button } from "antd";
-import { Link, Redirect, withRouter } from "react-router-dom";
-import "./Login.scss";
-import { AuthContext } from "../../auth/Auth";
+import React, { useCallback, useContext } from 'react';
+import PropTypes from 'prop-types';
+import firebase from '../../config/firebase';
+import { Input, Button } from 'antd';
+import { Link, Redirect, withRouter } from 'react-router-dom';
+import './Login.scss';
+import { AuthContext } from '../../auth/Auth';
 
 const Login = ({ history }) => {
   const handleLogin = useCallback(
@@ -14,12 +15,12 @@ const Login = ({ history }) => {
         await firebase
           .auth()
           .signInWithEmailAndPassword(email.value, password.value);
-        history.push("/");
+        history.push('/');
       } catch (error) {
         alert(error);
       }
     },
-    [history]
+    [history],
   );
 
   const { currentUser } = useContext(AuthContext);
@@ -39,6 +40,10 @@ const Login = ({ history }) => {
       </form>
     </div>
   );
+};
+
+Login.propTypes = {
+  history: PropTypes.instanceOf(Object),
 };
 
 export default withRouter(Login);

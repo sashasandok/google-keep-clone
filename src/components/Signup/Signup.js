@@ -1,25 +1,25 @@
-import React, { useCallback } from "react";
-import { withRouter } from "react-router-dom";
-import firebase from "../../config/firebase";
-import { Form, Input, Button } from "antd";
-import "./Signup.scss";
+import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import firebase from '../../config/firebase';
+import { Form, Input, Button } from 'antd';
+import './Signup.scss';
 
 const Signup = ({ history }) => {
   const handleSignUp = useCallback(
     async event => {
       event.preventDefault();
       const { email, password } = event.target.elements;
-      console.log(email, password);
       try {
         await firebase
           .auth()
           .createUserWithEmailAndPassword(email.value, password.value);
-        history.push("/");
+        history.push('/');
       } catch (error) {
         alert(error);
       }
     },
-    [history]
+    [history],
   );
 
   return (
@@ -32,6 +32,10 @@ const Signup = ({ history }) => {
       </Form>
     </div>
   );
+};
+
+Signup.propTypes = {
+  history: PropTypes.instanceOf(Object),
 };
 
 export default withRouter(Signup);

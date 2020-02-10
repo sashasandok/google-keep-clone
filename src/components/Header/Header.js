@@ -1,8 +1,8 @@
-import React from "react";
-import { Input, Icon } from "antd";
-import keep from "../../assets/keep.jpeg";
-import firebase from "../../config/firebase";
-import "./Header.scss";
+import React from 'react';
+import { Input, Icon } from 'antd';
+import keep from '../../assets/keep.jpeg';
+import firebase from '../../config/firebase';
+import './Header.scss';
 
 const { Search } = Input;
 
@@ -10,7 +10,7 @@ const header = () => {
   return (
     <header className="header-block">
       <div className="logo-and-sidebar">
-        <div className="sidebar-menu-icon" style={{ marginRight: "15px" }}>
+        <div className="sidebar-menu-icon" style={{ marginRight: '15px' }}>
           <span className="hovered-menu-icon-back">
             <Icon type="menu" className="menu-icon" />
           </span>
@@ -23,7 +23,7 @@ const header = () => {
           size="default"
           placeholder="search"
           onSearch={value => console.log(value)}
-          style={{ height: "5vh" }}
+          style={{ height: '5vh' }}
         />
       </div>
       <div className="user-and-settings">
