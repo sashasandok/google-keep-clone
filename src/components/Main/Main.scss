@@ -6,4 +6,91 @@
   min-height: 90vh;
   padding: 50px;
   box-sizing: border-box;
+
+  .panel-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 40vw;
+    min-height: 17vh;
+    padding: 2vh;
+    box-sizing: border-box;
+    border: 1px solid lightgrey;
+    box-shadow: 1px 2px 8px rgba(133, 133, 133, 0.5);
+    border-radius: 1.2vh;
+    transition: 0.3s;
+
+    input,
+    p {
+      cursor: pointer;
+    }
+  }
+
+  .panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 40vw;
+    min-height: 8vh;
+    padding: 2vh;
+    box-sizing: border-box;
+    border: 1px solid lightgrey;
+    box-shadow: 1px 2px 8px rgba(133, 133, 133, 0.5);
+    border-radius: 1.2vh;
+    transition: 0.3s;
+
+    .open-create-note {
+      font-size: 2.7vh;
+      margin-bottom: 0;
+      cursor: pointer;
+    }
+  }
+
+  .notes-block {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    margin: 10px;
+    padding: 10px;
+
+    .no-data {
+      width: 100%;
+      height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .note-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+
+    .note-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .note-icon-back {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 3vw;
+        border-radius: 50%;
+        height: 3vw;
+        transition: 0.3s;
+      }
+
+      .note-icon-back:hover {
+        cursor: pointer;
+        background-color: rgb(235, 235, 235);
+      }
+    }
+  }
 }

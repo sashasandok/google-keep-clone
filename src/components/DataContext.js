@@ -6,6 +6,7 @@ export const DataContext = React.createContext();
 
 const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const db = firebase.firestore();
@@ -16,7 +17,12 @@ const DataProvider = ({ children }) => {
       setData(notes);
     });
   }, []);
-  return <DataContext.Provider value={data}>{children}</DataContext.Provider>;
+
+  return (
+    <DataContext.Provider value={{ data, isLoading, setIsLoading }}>
+      {children}
+    </DataContext.Provider>
+  );
 };
 
 export default DataProvider;

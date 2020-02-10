@@ -1,0 +1,79 @@
+.note-block {
+  position: relative;
+  width: 17vw;
+  height: 38vh;
+  box-shadow: 1px 1px 3px rgba(78, 78, 78, 0.5);
+  border: 1px solid rgba(190, 190, 190, 0.459);
+  border-radius: 13px;
+  padding: 1vw;
+  text-align: justify;
+  word-break: normal;
+  margin-right: 2.5vw;
+  margin-bottom: 1.5vh;
+  margin-top: 1.5vh;
+
+  span {
+    font-size: 1vw;
+    word-break: break-all;
+    color: gray;
+  }
+
+  .check {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: 0.4s;
+    cursor: pointer;
+  }
+
+  .note-header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+
+    h2 {
+      word-break: break-all;
+      font-size: 1.5vw;
+    }
+
+    .pushpin-icon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      opacity: 0;
+      transition: 0.4s;
+      cursor: pointer;
+    }
+  }
+
+  .bottom-icons {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: 0.4s;
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+  }
+}
+
+.note-block:hover {
+  box-shadow: 1px 2px 7px rgba(78, 78, 78, 0.5);
+
+  .check {
+    opacity: 1;
+  }
+
+  .note-header {
+    .pushpin-icon {
+      opacity: 1;
+    }
+  }
+
+  .bottom-icons {
+    opacity: 1;
+  }
+}
