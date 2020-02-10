@@ -8,6 +8,8 @@ import AuthProvider from "../../auth/Auth";
 import DataProvider from "../../components/DataContext";
 import "./App.scss";
 
+require("dotenv").config();
+
 function App() {
   return (
     <div className="app">

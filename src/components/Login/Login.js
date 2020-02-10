@@ -35,7 +35,7 @@ const Login = ({ history }) => {
         <Input name="email" type="email" placeholder="Email" />
         <Input name="password" type="password" placeholder="Password" />
         <Button htmlType="submit">Log in</Button>
-        Or <Link to="/register">register now!</Link>
+        Or <Link to="/signup">register now!</Link>
       </form>
     </div>
   );
