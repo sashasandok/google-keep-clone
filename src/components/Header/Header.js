@@ -1,12 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Input, Icon } from 'antd';
 import keep from '../../assets/keep.jpeg';
 import firebase from '../../config/firebase';
 import './Header.scss';
 
-const { Search } = Input;
-
-const header = () => {
+const header = ({ setRes }) => {
   return (
     <header className="header-block">
       <div className="logo-and-sidebar">
@@ -19,10 +18,10 @@ const header = () => {
         <span>Keep Clone</span>
       </div>
       <div className="search-input">
-        <Search
+        <Input.Search
           size="default"
           placeholder="search"
-          onSearch={value => console.log(value)}
+          onChange={evt => setRes(evt.target.value)}
           style={{ height: '5vh' }}
         />
       </div>
@@ -36,6 +35,10 @@ const header = () => {
       </div>
     </header>
   );
+};
+
+header.propTypes = {
+  setRes: PropTypes.func.isRequired,
 };
 
 export default header;

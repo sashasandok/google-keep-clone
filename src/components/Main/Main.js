@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useInputValue } from '../../custom-hooks/';
 import Loader from '../Loader/Loader';
 import Modal from '../Modal/Modal';
-import Layout from '../../hocs/Layout/Layout';
 import Note from '../Note/Note';
+import Header from '../Header/Header';
 import { Input } from 'antd';
 import noteMapper from '../../mappers/note';
 import firebase from '../../config/firebase';
 import './Main.scss';
 
 const Main = () => {
+  const [res, setRes] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
 
@@ -68,7 +69,8 @@ const Main = () => {
   };
 
   return (
-    <Layout>
+    <div className="main">
+      <Header setRes={setRes} />
       <div className="main-page-block">
         {openCreate ? (
           <div className="panel-inputs">
@@ -100,17 +102,23 @@ const Main = () => {
         <div className="notes-block">
           {!isLoading && <Loader />}
           {data.length ? (
-            data.map((note, i) => {
-              return (
-                <Note
-                  key={i}
-                  id={note.id}
-                  title={note.title}
-                  content={note.content}
-                  openModal={() => openModal(note.id)}
-                />
-              );
-            })
+            data
+              .filter(item => {
+                const text = res && res.toLowerCase();
+                const searchStr = `${item.title}`;
+                return searchStr.toLowerCase().includes(text);
+              })
+              .map((note, i) => {
+                return (
+                  <Note
+                    key={i}
+                    id={note.id}
+                    title={note.title}
+                    content={note.content}
+                    openModal={() => openModal(note.id)}
+                  />
+                );
+              })
           ) : !isLoading ? (
             <Loader />
           ) : (
@@ -119,11 +127,11 @@ const Main = () => {
             </div>
           )}
         </div>
+        <Modal isModalOpen={isModalOpen} closeModal={closeModal}>
+          MODAL FOR UPDATE NOTE
+        </Modal>
       </div>
-      <Modal isModalOpen={isModalOpen} closeModal={closeModal}>
-        MODAL FOR UPDATE NOTE
-      </Modal>
-    </Layout>
+    </div>
   );
 };
 

@@ -6,7 +6,6 @@ import Login from '../../components/Login/Login';
 import Signup from '../../components/Signup/Signup';
 import AuthProvider from '../../auth/Auth';
 import './App.scss';
-
 require('dotenv').config();
 
 function App() {

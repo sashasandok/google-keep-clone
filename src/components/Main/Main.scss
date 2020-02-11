@@ -1,69 +1,71 @@
-.main-page-block {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  min-height: 100vh;
-  width: 100%;
-  box-sizing: border-box;
-
-  padding-top: 5vh;
-
-  .panel-inputs {
+.main {
+  .main-page-block {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    width: 40vw;
-    min-height: 17vh;
-    padding: 2vh;
-    box-sizing: border-box;
-    border: 1px solid lightgrey;
-    box-shadow: 1px 2px 8px rgba(133, 133, 133, 0.5);
-    border-radius: 1.2vh;
-    transition: 0.3s;
-
-    input,
-    p {
-      cursor: pointer;
-    }
-  }
-
-  .panel {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    width: 40vw;
-    min-height: 8vh;
-    padding: 2vh;
-    box-sizing: border-box;
-    border: 1px solid lightgrey;
-    box-shadow: 1px 2px 8px rgba(133, 133, 133, 0.5);
-    border-radius: 1.2vh;
-    transition: 0.3s;
-
-    .open-create-note {
-      font-size: 2.7vh;
-      width: 100%;
-      text-align: left;
-      margin-bottom: 0;
-      cursor: pointer;
-    }
-  }
-
-  .notes-block {
-    display: flex;
-    flex-wrap: wrap;
+    min-height: 100vh;
     width: 100%;
-    padding: 5vw;
+    box-sizing: border-box;
 
-    .no-data {
-      width: 100%;
-      height: 140px;
+    padding-top: 5vh;
+
+    .panel-inputs {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-around;
+      width: 40vw;
+      min-height: 17vh;
+      padding: 2vh;
+      box-sizing: border-box;
+      border: 1px solid lightgrey;
+      box-shadow: 1px 2px 8px rgba(133, 133, 133, 0.5);
+      border-radius: 1.2vh;
+      transition: 0.3s;
+
+      input,
+      p {
+        cursor: pointer;
+      }
+    }
+
+    .panel {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
       align-items: center;
+      width: 40vw;
+      min-height: 8vh;
+      padding: 2vh;
+      box-sizing: border-box;
+      border: 1px solid lightgrey;
+      box-shadow: 1px 2px 8px rgba(133, 133, 133, 0.5);
+      border-radius: 1.2vh;
+      transition: 0.3s;
+
+      .open-create-note {
+        font-size: 2.7vh;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 0;
+        cursor: pointer;
+      }
+    }
+
+    .notes-block {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      padding: 5vw;
+
+      .no-data {
+        width: 100%;
+        height: 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 }
