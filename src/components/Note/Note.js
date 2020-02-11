@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import firebase from '../../config/firebase';
 import { Icon } from 'antd';
 import './Note.scss';
 
@@ -9,7 +10,13 @@ const iconStyle = {
 
 const Note = ({ id, title, content, openModal }) => {
   const onNoteDelete = id => {
-    console.log(id);
+    firebase
+      .firestore()
+      .collection('notes')
+      .doc(id)
+      .delete()
+      .then(() => console.log('Document successfully deleted!'))
+      .catch(error => console.error('Error removing document: ', error));
   };
   return (
     <div className="note-block">

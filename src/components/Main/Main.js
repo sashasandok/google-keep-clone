@@ -6,6 +6,7 @@ import Layout from '../../hocs/Layout/Layout';
 import Note from '../Note/Note';
 import { Input, Icon } from 'antd';
 import { DataContext } from '../DataContext';
+import firebase from '../../config/firebase';
 import './Main.scss';
 
 const Main = () => {
@@ -43,9 +44,12 @@ const Main = () => {
 
   const onSubmit = () => {
     if (!title.bind.value || !content.bind.value) {
-      alert('PLEASE ENTER TEXT');
+      alert('Please Enter New Note');
     } else {
-      console.log('Submitted', title.bind.value, content.bind.value);
+      firebase
+        .firestore()
+        .collection('notes')
+        .add({ title: title.bind.value, content: content.bind.value });
     }
     title.clear();
     content.clear();
@@ -54,9 +58,8 @@ const Main = () => {
   if (isLoading) {
     setTimeout(() => {
       setIsLoading(false);
-    }, 4000);
+    }, 2000);
   }
-  console.log(data, isLoading);
 
   return (
     <Layout>
