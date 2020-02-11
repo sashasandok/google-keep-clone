@@ -1,16 +1,28 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useInputValue } from '../../custom-hooks/';
 import Loader from '../Loader/Loader';
 import Modal from '../Modal/Modal';
 import Layout from '../../hocs/Layout/Layout';
 import Note from '../Note/Note';
-import { Input, Icon } from 'antd';
-import { DataContext } from '../DataContext';
+import { Input } from 'antd';
+import noteMapper from '../../mappers/note';
 import firebase from '../../config/firebase';
 import './Main.scss';
 
 const Main = () => {
-  const { data, isLoading, setIsLoading } = useContext(DataContext);
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const db = firebase.firestore();
+    db.collection('notes').onSnapshot(snap => {
+      const notes = snap.docs.map(doc =>
+        noteMapper({ ...doc.data(), id: doc.id }),
+      );
+      setData(notes);
+      setIsLoading(true);
+    });
+  }, []);
 
   const [openCreate, setOpenCreate] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -55,12 +67,6 @@ const Main = () => {
     content.clear();
   };
 
-  if (isLoading) {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }
-
   return (
     <Layout>
       <div className="main-page-block">
@@ -89,34 +95,11 @@ const Main = () => {
             <p className="open-create-note" onClick={openCreateBlock}>
               New post...
             </p>
-
-            <div className="note-icons">
-              <div className="note-icon">
-                <span className="note-icon-back">
-                  <Icon type="check-square" />
-                </span>
-              </div>
-              <div className="note-icon">
-                <span className="note-icon-back">
-                  <Icon type="highlight" />
-                </span>
-              </div>
-              <div className="note-icon">
-                <span className="note-icon-back">
-                  <Icon type="picture" />
-                </span>
-              </div>
-            </div>
           </div>
         )}
         <div className="notes-block">
-          {!data.length ? (
-            <div className="no-data">
-              <h3>No any notes, please enter some new</h3>
-            </div>
-          ) : isLoading ? (
-            <Loader />
-          ) : (
+          {!isLoading && <Loader />}
+          {data.length ? (
             data.map((note, i) => {
               return (
                 <Note
@@ -128,6 +111,12 @@ const Main = () => {
                 />
               );
             })
+          ) : !isLoading ? (
+            <Loader />
+          ) : (
+            <div className="no-data">
+              <h3>No any notes, please enter some new</h3>
+            </div>
           )}
         </div>
       </div>

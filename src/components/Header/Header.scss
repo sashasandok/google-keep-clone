@@ -8,72 +8,74 @@
   width: 100%;
   height: 9vh;
   border-bottom: 1px solid lightgray;
-}
 
-.logo-and-sidebar {
-  font-size: 1.5vw;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;
-  width: 16%;
-}
+  .logo-and-sidebar {
+    font-size: 1.5vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 16%;
 
-.sidebar-menu-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    .sidebar-menu-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-.search-input {
-  width: 50%;
-}
+    .hovered-menu-icon-back {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      width: 3vw;
+      border-radius: 50%;
+      height: 3vw;
+      transition: 0.3s;
+    }
 
-.hovered-menu-icon-back {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 3vw;
-  border-radius: 50%;
-  height: 3vw;
-  transition: 0.3s;
-}
+    .hovered-menu-icon-back:hover {
+      cursor: pointer;
+      background-color: rgb(235, 235, 235);
+    }
 
-.hovered-menu-icon-back:hover {
-  cursor: pointer;
-  background-color: rgb(235, 235, 235);
-}
+    .header-logo {
+      width: 3vw;
+      height: auto;
+    }
+  }
 
-.header-logo {
-  width: 3vw;
-  height: auto;
-}
+  .search-input {
+    width: 50%;
+  }
 
-.user-and-settings {
-  display: flex;
-  justify-content: space-around;
-  width: 20%;
-}
+  .user {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 12%;
+    box-sizing: border-box;
 
-.user-and-settings-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    .user-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-.user-and-settings-icon-back {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 3vw;
-  border-radius: 50%;
-  height: 3vw;
-  transition: 0.3s;
-}
+      .user-icon-back {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 3vw;
+        border-radius: 50%;
+        height: 3vw;
+        transition: 0.3s;
+      }
 
-.user-and-settings-icon-back:hover {
-  cursor: pointer;
-  background-color: rgb(235, 235, 235);
+      .user-icon-back:hover {
+        cursor: pointer;
+        background-color: rgb(235, 235, 235);
+      }
+    }
+  }
 }

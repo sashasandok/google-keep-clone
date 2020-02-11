@@ -26,22 +26,10 @@ const header = () => {
           style={{ height: '5vh' }}
         />
       </div>
-      <div className="user-and-settings">
-        <div className="user-and-settings-icon">
-          <span className="user-and-settings-icon-back">
-            <Icon type="setting" />
-          </span>
-        </div>
-        <div className="user-and-settings-icon">
-          <span className="user-and-settings-icon-back">
-            <Icon type="user" />
-          </span>
-        </div>
-        <div
-          className="user-and-settings-icon"
-          onClick={() => firebase.auth().signOut()}
-        >
-          <span className="user-and-settings-icon-back">
+      <div className="user">
+        <div>Logout</div>
+        <div className="user-icon" onClick={() => firebase.auth().signOut()}>
+          <span className="user-icon-back">
             <Icon type="logout" />
           </span>
         </div>

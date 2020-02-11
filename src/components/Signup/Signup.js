@@ -23,12 +23,12 @@ const Signup = ({ history }) => {
   );
 
   return (
-    <div>
+    <div className="register-form-layout">
       <h1>Sign up</h1>
-      <Form onSubmit={handleSignUp}>
+      <Form onSubmit={handleSignUp} className="register-form">
         <Input name="email" type="email" placeholder="Email" />
         <Input name="password" type="password" placeholder="Password" />
-        <Button type="submit">Sign Up</Button>
+        <Button htmlType="submit">Sign Up</Button>
       </Form>
     </div>
   );

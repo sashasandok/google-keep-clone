@@ -12,7 +12,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    max-width: 300px;
+    width: 30vw;
     height: 30vh;
     padding: 10px;
 
@@ -21,6 +21,10 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
+
+      .signup-link {
+        font-size: 1.3vw;
+      }
     }
   }
 }

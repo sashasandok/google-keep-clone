@@ -3,9 +3,11 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  min-height: 90vh;
-  padding: 50px;
+  min-height: 100vh;
+  width: 100%;
   box-sizing: border-box;
+
+  padding-top: 5vh;
 
   .panel-inputs {
     display: flex;
@@ -42,6 +44,8 @@
 
     .open-create-note {
       font-size: 2.7vh;
+      width: 100%;
+      text-align: left;
       margin-bottom: 0;
       cursor: pointer;
     }
@@ -50,9 +54,8 @@
   .notes-block {
     display: flex;
     flex-wrap: wrap;
-    width: 80vw;
-    margin: 10px;
-    padding: 10px;
+    width: 100%;
+    padding: 5vw;
 
     .no-data {
       width: 100%;
@@ -61,36 +64,6 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-    }
-  }
-
-  .note-icons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 25%;
-
-    .note-icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      .note-icon-back {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        width: 3vw;
-        border-radius: 50%;
-        height: 3vw;
-        transition: 0.3s;
-      }
-
-      .note-icon-back:hover {
-        cursor: pointer;
-        background-color: rgb(235, 235, 235);
-      }
     }
   }
 }

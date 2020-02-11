@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 import PropTypes from 'prop-types';
 import firebase from '../../config/firebase';
-import { Input, Button } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import './Login.scss';
 import { AuthContext } from '../../auth/Auth';
@@ -32,12 +32,17 @@ const Login = ({ history }) => {
   return (
     <div className="login-form-layout">
       <h2>Log in</h2>
-      <form onSubmit={handleLogin} className="login-form">
+      <Form onSubmit={handleLogin} className="login-form">
         <Input name="email" type="email" placeholder="Email" />
         <Input name="password" type="password" placeholder="Password" />
-        <Button htmlType="submit">Log in</Button>
-        Or <Link to="/signup">register now!</Link>
-      </form>
+        <div className="submit-block">
+          <Button htmlType="submit">Log in</Button>
+          or
+          <Link to="/signup" className="signup-link">
+            register now!
+          </Link>
+        </div>
+      </Form>
     </div>
   );
 };
