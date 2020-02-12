@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useInputValue } from '../../custom-hooks/';
 import Loader from '../Loader/Loader';
 import Modal from '../Modal/Modal';
 import Note from '../Note/Note';
 import Header from '../Header/Header';
-import { Input } from 'antd';
+import { Input, Button } from 'antd';
 import noteMapper from '../../mappers/note';
 import firebase from '../../config/firebase';
 import './Main.scss';
 
 const Main = () => {
+  // state for filtering notes
   const [res, setRes] = useState('');
+  // state for loader
   const [isLoading, setIsLoading] = useState(false);
+  // notes for mapping
   const [data, setData] = useState([]);
-
+  // get notes list from firebase
   useEffect(() => {
     const db = firebase.firestore();
     db.collection('notes').onSnapshot(snap => {
@@ -25,12 +28,22 @@ const Main = () => {
     });
   }, []);
 
+  // state for opening create form
   const [openCreate, setOpenCreate] = useState(false);
+  //state for opening modal
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  // state for creating new note
   const title = useInputValue('');
   const content = useInputValue('');
+  // curr note for updating
+  const [currNote, settCurrNote] = useState('');
+  // state for updated title and content
+  const [updatedTitle, setUpdatedTitle] = useState('');
+  const [updatedContent, setUupdatedContent] = useState('');
+  const inputTitleRef = useRef('');
+  const inputContentRef = useRef('');
 
+  // open and close create note form
   const openCreateBlock = () => {
     setOpenCreate(true);
   };
@@ -39,20 +52,42 @@ const Main = () => {
     setOpenCreate(false);
   };
 
+  // open and close modal
+  const openModal = note => {
+    settCurrNote(note);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  // submit note update
+  const onSaveEditedNote = () => {
+    if (!updatedTitle || (!updatedContent && !title) || !content) {
+      alert('Please, Enter Updates To Note');
+    } else {
+      const editedNote = {
+        id: currNote.id,
+        title: updatedTitle,
+        content: updatedContent,
+      };
+      firebase
+        .firestore()
+        .collection('notes')
+        .doc(currNote.id)
+        .set(editedNote);
+    }
+    closeModal();
+  };
+
+  // submit note creation
   const onKeyDown = event => {
     if (event.key === 'Enter') {
       event.preventDefault();
       event.stopPropagation();
       onSubmit();
     }
-  };
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
   };
 
   const onSubmit = () => {
@@ -115,7 +150,7 @@ const Main = () => {
                     id={note.id}
                     title={note.title}
                     content={note.content}
-                    openModal={() => openModal(note.id)}
+                    openModal={() => openModal(note)}
                   />
                 );
               })
@@ -128,7 +163,40 @@ const Main = () => {
           )}
         </div>
         <Modal isModalOpen={isModalOpen} closeModal={closeModal}>
-          MODAL FOR UPDATE NOTE
+          <div className="edit-note">
+            <form>
+              <input
+                type="text"
+                name="title"
+                onChange={evt => setUpdatedTitle(evt.target.value)}
+                defaultValue={currNote.title}
+                ref={inputTitleRef}
+              />
+              <input
+                type="text"
+                name="content"
+                onChange={evt => setUupdatedContent(evt.target.value)}
+                defaultValue={currNote.content}
+                ref={inputContentRef}
+              />
+              <div className="edit-btns">
+                <Button
+                  onClick={onSaveEditedNote}
+                  style={{ width: '80px' }}
+                  type="primary"
+                >
+                  Save
+                </Button>
+                <Button
+                  onClick={closeModal}
+                  style={{ width: '80px' }}
+                  type="danger"
+                >
+                  Close
+                </Button>
+              </div>
+            </form>
+          </div>
         </Modal>
       </div>
     </div>

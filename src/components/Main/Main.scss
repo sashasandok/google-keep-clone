@@ -4,10 +4,9 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    min-height: 100vh;
+    min-height: 90vh;
     width: 100%;
     box-sizing: border-box;
-
     padding-top: 5vh;
 
     .panel-inputs {
@@ -65,6 +64,35 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+      }
+    }
+  }
+
+  .edit-note {
+    height: 100%;
+
+    form {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      input {
+        box-sizing: border-box;
+        padding: 1.5vh;
+        border-radius: 1vh;
+        border: 1px solid transparent;
+      }
+
+      input:focus,
+      input:active {
+        outline: none;
+        border: 1px solid gray;
+      }
+
+      .edit-btns {
+        display: flex;
+        justify-content: space-around;
       }
     }
   }
